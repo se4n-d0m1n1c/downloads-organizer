@@ -118,15 +118,23 @@ def organize_downloads():
     
     return moved_any
 
-if __name__ == "__main__":
+def main():
+    """Main entry point for the interactive organizer"""
     print("Downloads Folder Organizer")
-    print("Project location: ~/Projects/downloads-organizer/")
     print("=" * 50)
     
-    # Run organization automatically
-    success = organize_downloads()
-    
-    if success:
-        print(f"Organization completed successfully. Log saved to {log_file}")
+    # Ask for user confirmation
+    response = input("Organize Downloads folder now? (y/n): ").strip().lower()
+    if response in ['y', 'yes']:
+        success = organize_downloads()
+        
+        if success:
+            print(f"Organization completed successfully. Log saved to {log_file}")
+        else:
+            print(f"No files needed organization. Log saved to {log_file}")
     else:
-        print(f"No files needed organization. Log saved to {log_file}")
+        print("Operation cancelled.")
+
+
+if __name__ == "__main__":
+    main()

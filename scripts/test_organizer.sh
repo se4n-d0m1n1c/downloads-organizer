@@ -2,7 +2,8 @@
 # Test script for Downloads Organizer
 
 echo "Testing Downloads Organizer..."
-echo "Project: ~/Projects/downloads-organizer/"
+PROJECT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+echo "Project: $PROJECT_PATH/"
 echo ""
 
 # Create test files in Downloads
@@ -19,7 +20,7 @@ ls -la test_* 2>/dev/null || echo "No test files found (they may have been organ
 
 echo ""
 echo "Running organizer..."
-python3 ~/Projects/downloads-organizer/organize_downloads_cron.py
+python3 "$PROJECT_PATH/src/organize_downloads_cron.py"
 
 echo ""
 echo "Checking where files were moved..."

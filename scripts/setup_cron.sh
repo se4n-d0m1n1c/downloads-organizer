@@ -7,8 +7,8 @@ echo "Project location: ~/Projects/downloads-organizer/"
 echo ""
 
 # Get the full path to the organizer script
-PROJECT_PATH="$HOME/Projects/downloads-organizer"
-ORGANIZER_SCRIPT="$PROJECT_PATH/organize_downloads_cron.py"
+PROJECT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ORGANIZER_SCRIPT="$PROJECT_PATH/src/organize_downloads_cron.py"
 PYTHON_PATH=$(which python3)
 
 if [ ! -f "$ORGANIZER_SCRIPT" ]; then

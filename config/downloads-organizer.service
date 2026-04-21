@@ -8,7 +8,7 @@ Type=simple
 Restart=always
 RestartSec=1
 User=sean
-ExecStart=/home/sean/Projects/downloads-organizer/watch_downloads.sh
+ExecStart=/home/sean/Projects/downloads-organizer/scripts/watch_downloads.sh
 StandardOutput=journal
 StandardError=journal
 

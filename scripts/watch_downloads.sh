@@ -3,8 +3,8 @@
 # Located in ~/Projects/downloads-organizer/
 
 DOWNLOAD_PATH="$HOME/Downloads"
-PROJECT_PATH="$HOME/Projects/downloads-organizer"
-ORGANIZER_SCRIPT="$PROJECT_PATH/organize_downloads_cron.py"
+PROJECT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ORGANIZER_SCRIPT="$PROJECT_PATH/src/organize_downloads_cron.py"
 LOG_FILE="$HOME/.hermes/downloads_watcher.log"
 PYTHON_PATH=$(which python3)
 

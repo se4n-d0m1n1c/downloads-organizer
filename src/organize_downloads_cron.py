@@ -116,7 +116,8 @@ def organize_downloads():
     
     return moved_any
 
-if __name__ == "__main__":
+def main():
+    """Main entry point for the cron/watcher organizer"""
     # Run organization automatically (no user input for cron)
     success = organize_downloads()
     
@@ -124,3 +125,7 @@ if __name__ == "__main__":
         print(f"Organization completed successfully. Log saved to {log_file}")
     else:
         print(f"No files needed organization. Log saved to {log_file}")
+
+
+if __name__ == "__main__":
+    main()

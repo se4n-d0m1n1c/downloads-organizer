@@ -20,6 +20,10 @@ wheels/
 .installed.cfg
 *.egg
 
+# Project builds and distributions
+*.dist-info/
+*.egg-info/
+
 # Logs
 *.log
 logs/
@@ -63,3 +67,12 @@ downloads_watcher.log
 # Temporary files
 *.tmp
 *.temp
+
+# Project specific
+# Ignore any test files created during testing
+test_*
+!tests/
+
+# Ignore any personal configuration
+.config/
+.local/

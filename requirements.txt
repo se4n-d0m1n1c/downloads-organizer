@@ -1,0 +1,15 @@
+# Downloads Folder Organizer - Python Dependencies
+
+# Core Python (stdlib only - no external dependencies!)
+# This project uses only Python standard library modules:
+# - os
+# - shutil
+# - logging
+# - pathlib
+# - datetime
+
+# Optional dependencies for additional features:
+# No external dependencies required!
+
+# For development/testing (optional):
+# pytest>=7.0.0

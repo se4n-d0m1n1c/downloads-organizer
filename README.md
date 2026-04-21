@@ -1,46 +1,60 @@
 # Downloads Folder Organizer
 
-A Python-based automation tool that organizes your Downloads folder by file type.
+A Python-based automation tool that organizes your Downloads folder by file type in real-time or on a schedule.
 
-## Project Location
-`~/Projects/downloads-organizer/`
+## Features
+- **Real-time organization** - Watches Downloads folder and organizes files as they arrive
+- **Smart categorization** - 10+ file categories with customizable extensions
+- **Multiple scheduling options** - Cron jobs, systemd service, or manual runs
+- **Duplicate handling** - Automatically renames duplicate files
+- **Comprehensive logging** - Detailed logs for troubleshooting
+- **Easy setup** - Interactive setup script with menu options
 
-## Files
-
-- `organize_downloads.py` - Interactive organizer (asks for confirmation)
-- `organize_downloads_cron.py` - Automatic organizer for cron/watcher
-- `watch_downloads.sh` - Real-time watcher using inotifywait
-- `setup_organizer.sh` - Main setup script with menu options
-- `setup_cron.sh` - Cron setup script
-- `downloads-organizer.service` - Systemd service file
-
-## How to Use
-
-### Quick Start
-```bash
-cd ~/Projects/downloads-organizer/
-./setup_organizer.sh
+## Project Structure
+```
+downloads-organizer/
+├── src/                    # Python source code
+│   ├── organize_downloads.py      # Interactive organizer
+│   └── organize_downloads_cron.py # Automatic organizer (for cron/watcher)
+├── scripts/                # Shell scripts
+│   ├── watch_downloads.sh         # Real-time folder watcher
+│   ├── setup_organizer.sh         # Interactive setup menu
+│   ├── setup_cron.sh              # Cron job setup
+│   └── test_organizer.sh          # Test script
+├── config/                # Configuration files
+│   └── downloads-organizer.service # Systemd service file
+├── docs/                  # Documentation
+│   └── README.md                 # Detailed documentation
+├── tests/                 # Test files (future)
+├── .gitignore            # Git ignore rules
+└── requirements.txt      # Python dependencies (minimal)
 ```
 
-### Manual Organization
+## Quick Start
+
+### 1. Clone and navigate
 ```bash
-python3 ~/Projects/downloads-organizer/organize_downloads.py
+git clone https://github.com/se4n-d0m1n1c/downloads-organizer.git
+cd downloads-organizer
 ```
 
-### Real-time Watcher
+### 2. Easy setup (recommended)
 ```bash
-~/Projects/downloads-organizer/watch_downloads.sh
-# Run in background: nohup ~/Projects/downloads-organizer/watch_downloads.sh &
+./scripts/setup_organizer.sh
 ```
 
-### Cron Job (Daily at 6 PM)
+### 3. Manual organization
 ```bash
-0 18 * * * /usr/bin/python3 ~/Projects/downloads-organizer/organize_downloads_cron.py
+python3 src/organize_downloads.py
+```
+
+### 4. Real-time watcher
+```bash
+./scripts/watch_downloads.sh
 ```
 
 ## File Categories
-
-Files are organized into these folders:
+Files are automatically sorted into these folders:
 - **Documents** - PDF, Word, Excel, PowerPoint, Text files
 - **Images** - JPG, PNG, GIF, SVG, etc.
 - **Videos** - MP4, AVI, MOV, MKV, etc.
@@ -52,23 +66,23 @@ Files are organized into these folders:
 - **Ebooks** - EPUB, MOBI, AZW3
 - **Miscellaneous** - Files that don't match any category
 
-## Logs
+## Installation Methods
 
-- Organizer logs: `~/.hermes/downloads_organizer.log`
-- Watcher logs: `/tmp/downloads_watcher.log`
-
-## Add to Startup
-
-To run the watcher automatically on login, add to `~/.bashrc`:
+### Method 1: Real-time Watcher (Recommended)
 ```bash
-nohup ~/Projects/downloads-organizer/watch_downloads.sh > /tmp/downloads_watcher.log 2>&1 &
+./scripts/watch_downloads.sh
+# Run in background: nohup ./scripts/watch_downloads.sh &
 ```
 
-## Systemd Service
-
-To run as a system service:
+### Method 2: Cron Job (Scheduled)
 ```bash
-sudo cp ~/Projects/downloads-organizer/downloads-organizer.service /etc/systemd/system/
+./scripts/setup_cron.sh
+# Or manually: 0 18 * * * /usr/bin/python3 /path/to/src/organize_downloads_cron.py
+```
+
+### Method 3: Systemd Service
+```bash
+sudo cp config/downloads-organizer.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable downloads-organizer
 sudo systemctl start downloads-organizer
@@ -76,8 +90,23 @@ sudo systemctl start downloads-organizer
 
 ## Customization
 
-Edit `organize_downloads_cron.py` to:
-- Add new file extensions
-- Change category names
+Edit `src/organize_downloads_cron.py` to:
+- Add new file extensions to categories
+- Change category names or folder structure
 - Modify logging settings
 - Adjust duplicate file handling
+
+## Logs
+- Organizer logs: `~/.hermes/downloads_organizer.log`
+- Watcher logs: `/tmp/downloads_watcher.log`
+
+## Requirements
+- Python 3.6+
+- Linux with inotify support (for real-time watcher)
+- Basic shell utilities
+
+## License
+MIT License - Feel free to use and modify for your needs.
+
+## Contributing
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
