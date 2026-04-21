@@ -51,7 +51,7 @@ case $choice in
         fi
         
         # Make sure watcher script exists
-        WATCHER_SCRIPT="$PROJECT_PATH/watch_downloads.sh"
+        WATCHER_SCRIPT="$PROJECT_PATH/scripts/watch_downloads.sh"
         if [ ! -f "$WATCHER_SCRIPT" ]; then
             echo "ERROR: Watcher script not found at $WATCHER_SCRIPT"
             exit 1
@@ -66,7 +66,7 @@ case $choice in
         echo "To stop: pkill -f watch_downloads.sh"
         echo ""
         echo "To run automatically on startup, add this to your ~/.bashrc:"
-        echo "  nohup $PROJECT_PATH/watch_downloads.sh > /tmp/downloads_watcher.log 2>&1 &"
+        echo "  nohup $PROJECT_PATH/scripts/watch_downloads.sh > /tmp/downloads_watcher.log 2>&1 &"
         ;;
     
     2)
