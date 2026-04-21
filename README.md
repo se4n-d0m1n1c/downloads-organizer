@@ -100,10 +100,28 @@ Edit `src/organize_downloads_cron.py` to:
 - Organizer logs: `~/.hermes/downloads_organizer.log`
 - Watcher logs: `/tmp/downloads_watcher.log`
 
+## Platform Support
+
+This project now supports **Windows, macOS, and Linux**!
+
+### Windows Users
+See the [Windows Edition README](windows/README_WINDOWS.md) for complete setup instructions including:
+- PowerShell scripts for real-time monitoring
+- Windows Task Scheduler integration  
+- Batch files for easy manual execution
+- Windows-specific setup wizard
+
+### Linux/macOS Users
+Use the standard setup scripts in the `scripts/` folder for:
+- Real-time watcher with inotify (Linux) or fswatch (macOS)
+- Cron job scheduling
+- Systemd service setup (Linux)
+
 ## Requirements
-- Python 3.6+
-- Linux with inotify support (for real-time watcher)
-- Basic shell utilities
+- **Python 3.6+** (required for all platforms)
+- **Linux**: inotify-tools for real-time watcher
+- **Windows**: PowerShell 5.1+ for scripts
+- **macOS**: fswatch for real-time watcher (optional)
 
 ## License
 MIT License - Feel free to use and modify for your needs.
