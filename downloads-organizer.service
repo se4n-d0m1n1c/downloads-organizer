@@ -1,0 +1,16 @@
+[Unit]
+Description=Downloads Folder Organizer Watcher
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=sean
+ExecStart=/home/sean/Projects/downloads-organizer/watch_downloads.sh
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
